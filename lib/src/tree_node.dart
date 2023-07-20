@@ -184,8 +184,8 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
                     color: widget.data.backgroundColor?.call(),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                      child: TextButton(
-                        onPressed: () {
+                      child: InkWell(
+                        onTap: () {
                           widget.onTitleTap(widget.data);
                         },
                         child: Text(
