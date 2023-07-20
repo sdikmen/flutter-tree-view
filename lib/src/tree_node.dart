@@ -128,16 +128,18 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
           splashColor: widget.contentTappable ? null : Colors.transparent,
           highlightColor: widget.contentTappable ? null : Colors.transparent,
           mouseCursor: widget.contentTappable ? SystemMouseCursors.click : MouseCursor.defer,
-          onTap: widget.contentTappable ? () {
-            if (hasData) {
-              widget.onTap(widget.data);
-              toggleExpansion();
-            } else {
-              _isChecked = !_isChecked;
-              widget.onCheck(_isChecked, widget.data);
-              setState(() {});
-            }
-          } : (){},
+          onTap: widget.contentTappable
+              ? () {
+                  if (hasData) {
+                    widget.onTap(widget.data);
+                    toggleExpansion();
+                  } else {
+                    _isChecked = !_isChecked;
+                    widget.onCheck(_isChecked, widget.data);
+                    setState(() {});
+                  }
+                }
+              : () {},
           child: Container(
             margin: const EdgeInsets.only(bottom: 2.0),
             padding: const EdgeInsets.only(right: 12.0),
@@ -148,10 +150,12 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
                   child: IconButton(
                     iconSize: 16,
                     icon: hasData ? widget.icon : Container(),
-                    onPressed: hasData ? () {
-                      widget.onTap(widget.data);
-                      toggleExpansion();
-                    } : null,
+                    onPressed: hasData
+                        ? () {
+                            widget.onTap(widget.data);
+                            toggleExpansion();
+                          }
+                        : null,
                   ),
                   turns: _turnsTween.animate(_rotationController),
                 ),
@@ -180,7 +184,7 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 6.0),
                       child: TextButton(
-                        onPressed(){
+                        onPressed: () {
                           widget.onTitleTap(widget.data);
                         },
                         child: Text(
@@ -208,8 +212,7 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
                     },
                     child: const Text('Remove', style: TextStyle(fontSize: 12.0)),
                   ),
-                if (widget.data.customActions?.isNotEmpty == true)
-                  ...widget.data.customActions!,
+                if (widget.data.customActions?.isNotEmpty == true) ...widget.data.customActions!,
               ],
             ),
           ),
