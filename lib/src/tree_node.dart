@@ -15,8 +15,8 @@ class TreeNode extends StatefulWidget {
   final double offsetLeft;
   final int? maxLines;
 
-  final Function(TreeNodeData node) onTitleTap;
   final Function(TreeNodeData node) onTap;
+  final Function(TreeNodeData node) onTitleTap;
   final void Function(bool checked, TreeNodeData node) onCheck;
 
   final void Function(TreeNodeData node) onExpand;
@@ -145,6 +145,7 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
             padding: const EdgeInsets.only(right: 12.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 RotationTransition(
                   child: IconButton(
