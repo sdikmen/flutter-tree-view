@@ -36,7 +36,7 @@ class TreeView extends StatefulWidget {
   const TreeView({
     Key? key,
     required this.data,
-    this.titleTap,
+    this.onTitleTap,
     this.onTap,
     this.onCheck,
     this.onLoad,
@@ -85,7 +85,7 @@ class _TreeViewState extends State<TreeView> {
   }
 
   void _onChange(String val) {
-     _renderList = widget.data;
+    _renderList = widget.data;
 
     if (val.isNotEmpty) {
       _renderList = _filter(val, _renderList);
@@ -152,11 +152,10 @@ class _TreeViewState extends State<TreeView> {
                 bottom: 12.0,
               ),
               child: TextField(
-                onChanged: _onChange,
-                 decoration: InputDecoration(
-                  labelText: widget.filterPlaceholder,
-                )
-              ),
+                  onChanged: _onChange,
+                  decoration: InputDecoration(
+                    labelText: widget.filterPlaceholder,
+                  )),
             ),
           ...List.generate(
             _renderList.length,
