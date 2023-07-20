@@ -46,8 +46,8 @@ class TreeNode extends StatefulWidget {
     required this.load,
     required this.append,
     required this.remove,
-    required this.onTitleTap,
     required this.onTap,
+    required this.onTitleTap,
     required this.onCheck,
     required this.onLoad,
     required this.onExpand,
@@ -83,8 +83,8 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
         showCheckBox: widget.showCheckBox,
         showActions: widget.showActions,
         contentTappable: widget.contentTappable,
-        onTitleTap: widget.onTitleTap,
         onTap: widget.onTap,
+        onTitleTap: widget.onTitleTap,
         onCheck: widget.onCheck,
         onExpand: widget.onExpand,
         onLoad: widget.onLoad,
@@ -145,7 +145,6 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
             padding: const EdgeInsets.only(right: 12.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 RotationTransition(
                   child: IconButton(
@@ -184,15 +183,10 @@ class _TreeNodeState extends State<TreeNode> with SingleTickerProviderStateMixin
                     color: widget.data.backgroundColor?.call(),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                      child: InkWell(
-                        onTap: () {
-                          widget.onTitleTap(widget.data);
-                        },
-                        child: Text(
-                          widget.data.title,
-                          maxLines: widget.maxLines ?? 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      child: Text(
+                        widget.data.title,
+                        maxLines: widget.maxLines ?? 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),
