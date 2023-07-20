@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TreeNodeData {
-  String title;
+  Widget child;
   bool expanded;
   bool checked;
   dynamic extra;
@@ -12,7 +12,7 @@ class TreeNodeData {
   List<TreeNodeData> children;
 
   TreeNodeData({
-    required this.title,
+    required this.child,
     required this.expanded,
     required this.checked,
     required this.children,
@@ -24,10 +24,10 @@ class TreeNodeData {
   });
 
   TreeNodeData.from(TreeNodeData other):
-    this(title: other.title, expanded: other.expanded, checked: other.checked, extra: other.extra, children: other.children);
+    this(child: other.child, expanded: other.expanded, checked: other.checked, extra: other.extra, children: other.children);
 
   @override
   String toString() {
-    return 'TreeNodeData{title: $title, expanded: $expanded, checked: $checked, extra: $extra, ${children.length} children}';
+    return 'TreeNodeData{child: $child, expanded: $expanded, checked: $checked, extra: $extra, ${children.length} children}';
   }
 }
