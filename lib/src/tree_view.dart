@@ -21,6 +21,7 @@ class TreeView extends StatefulWidget {
   /// - if I check/uncheck all children I want the parent to be checked/unchecked
   final bool manageParentState;
 
+  final Function(TreeNodeData node)? onTitleTap;
   final Function(TreeNodeData node)? onTap;
   final void Function(TreeNodeData node)? onLoad;
   final void Function(TreeNodeData node)? onExpand;
@@ -35,6 +36,7 @@ class TreeView extends StatefulWidget {
   const TreeView({
     Key? key,
     required this.data,
+    this.titleTap,
     this.onTap,
     this.onCheck,
     this.onLoad,
@@ -173,6 +175,7 @@ class _TreeViewState extends State<TreeView> {
                 showCheckBox: widget.showCheckBox,
                 showActions: widget.showActions,
                 contentTappable: widget.contentTappable,
+                onTitleTap: widget.onTitleTap ?? (n) {},
                 onTap: widget.onTap ?? (n) {},
                 onLoad: widget.onLoad ?? (n) {},
                 onCheck: widget.onCheck ?? (b, n) {},
